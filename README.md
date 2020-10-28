@@ -14,7 +14,7 @@ The new field is currently in alpha.
 
 [https://github.com/getkirby/kirby/archive/feature/blocks.zip](https://github.com/getkirby/kirby/archive/feature/blocks.zip)
 
-This is a complete kirby folder. Replace your current installation with it and **make sure to wipe your media folder**. It might also be required to flush the browser cache if the builder field does not show up correctly. 
+This is a complete kirby folder. Replace your current installation with it and **make sure to wipe your media folder**. It might also be required to flush the browser cache if the blocks field does not show up correctly. 
 
 ## Issues
 
@@ -318,13 +318,13 @@ Turns the block data to an associative array
 All blocks are part of a blocks collection. It follows the regular stuff you can do with collections in Kirby. But the nicest part is that you can now turn the entire list of blocks into HTML by simply echoing it
 
 ```php
-<?= $page->myBuilderField()->toBlocks() ?>
+<?= $page->myBlocksField()->toBlocks() ?>
 ```
 
 Of course it's still possible to use a foreach loop instead: 
 
 ```php
-<?php foreach ($page->myBuilderField()->toBlocks() as $block): ?>
+<?php foreach ($page->myBlocksField()->toBlocks() as $block): ?>
 <?= $block ?>
 <?php endforeach ?>
 ```
@@ -332,7 +332,7 @@ Of course it's still possible to use a foreach loop instead:
 or the good old version by manually loading snippets
 
 ```php
-<?php foreach ($page->myBuilderField()->toBlocks() as $block): ?>
+<?php foreach ($page->myBlocksField()->toBlocks() as $block): ?>
 <?php snippet('blocks/' . $block->type(), ['block' => $block]) ?>
 <?php endforeach ?>
 ```
@@ -340,7 +340,7 @@ or the good old version by manually loading snippets
 if you want to keep the `$data` variable instead of `$block` this is of course possible as well. 
 
 ```php
-<?php foreach ($page->myBuilderField()->toBlocks() as $block): ?>
+<?php foreach ($page->myBlocksField()->toBlocks() as $block): ?>
 <?php snippet('blocks/' . $block->type(), ['data' => $block]) ?>
 <?php endforeach ?>
 ```
