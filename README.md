@@ -2,6 +2,8 @@
 
 This is a temporary repository to write documentation and collect docs, issues and feedback for our new blocks field. Follow announcements and discussions on Discord for more information: https://chat.getkirby.com
 
+![blocks](https://user-images.githubusercontent.com/24532/97420723-f921ab00-190b-11eb-81f3-196a7b8b51ea.png)
+
 ## About the new blocks field
 
 The Kirby Builder by Tim Ötting is one of the most popular plugins out there and together with Tim we decided to add it to the core. We've rewritten it from scratch and merged it with our popular Editor plugin. The new field is called Blocks
@@ -119,11 +121,17 @@ fields:
 
 When you have a lot of block types you can now group them.
 
-**Grouped**
-
 **Ungrouped (default)**
 
-The ungrouped selector will automatically show up, if you just define your fieldsets. With the `fieldsetGroups` option you can take control and create such groups though: 
+![ungrouped-fieldsets](https://user-images.githubusercontent.com/24532/97420762-02127c80-190c-11eb-94e1-a4b38b14de41.png)
+
+The ungrouped selector will automatically show up, if you just define your fieldsets.
+
+**Grouped**
+
+![grouped-fieldsets](https://user-images.githubusercontent.com/24532/97420757-00e14f80-190c-11eb-947e-3789a576b5b2.png)
+
+With the `fieldsetGroups` option you can take control and create such groups though: 
 
 ```yaml
 fields:
