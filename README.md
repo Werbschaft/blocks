@@ -163,7 +163,7 @@ return [
             'heading' => 'blocks/heading',
             'text'    => 'blocks/text',
             'image'   => 'blocks/image',
-						'video'   => 'blocks/video'
+	    'video'   => 'blocks/video'
         ],
         'fieldsetGroups' => [
             'text' => [
@@ -177,7 +177,7 @@ return [
                 'label' => 'Media',
                 'fieldsets' => [
                     'image',
-										'video'
+		    'video'
                 ]
             ]
         ]
