@@ -354,3 +354,40 @@ if you want to keep the `$data` variable instead of `$block` this is of course p
 ```
 
 Rendering the block by converting it to a string will automatically pass `$block` and `$data` to the snippet for enhanced compatibility with the plugin
+
+## The Layout field
+
+In addition to the blocks field we also have a new layout field for complex block layouts in multiple columns. 
+
+```yaml
+fields:
+  layout: 
+    type: layout
+    layouts:
+      - "1/1"
+      - "1/2, 1/2"
+      - "1/4, 1/4, 1/4, 1/4"
+      - "1/3, 2/3"
+      - "2/3, 1/3"
+      - "1/3, 1/3, 1/3"    
+```
+
+The layout field also accepts the `fieldsets` option from the blocks field to control blocks in columns. 
+
+### How to render layouts in your templates
+
+There's a new `toLayouts` field method, which you can use to get a structured collection of layout objects to create your HTML.
+
+```html
+<?php foreach ($page->layout()->toLayouts() as $layout): ?>
+<section class="grid" id="<?= $layout->id() ?>">
+  <?php foreach ($layout->columns() as $column): ?>
+  <div class="column" style="--span:<?= $column->span() ?>">
+    <div class="blocks">
+      <?= $column->blocks() ?>
+    </div>
+  </div>
+  <?php endforeach ?>
+</section>
+<?php endforeach ?>
+```
