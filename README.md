@@ -34,7 +34,7 @@ fields:
     label: Text
     type: blocks
 ```
-This will give you the default block types (Heading, Text, Image, Quote, Video, Code)
+This will give you the default block types (Heading, Text, Image, Gallery, Quote, Video, Code, Kirbytext)
 
 
 ### Add your own block types
@@ -54,9 +54,9 @@ fields:
             layout: cards
 ```
 
-### Use Kirby's default fieldsets
+**When you define your own fieldsets, Kirby's default fieldsets will be disabled and you have to activate them to use them.**
 
-When you define your own fieldsets, Kirby's default fieldsets will be disabled and you have to activate them to use them. 
+### Combine custom and default fieldsets
 
 ```yaml
 fields:
@@ -103,20 +103,6 @@ fields:
             layout: cards
 ```
 
-### Disable default fieldsets
-
-If you don't want to use any of the default fieldsets, you can disable them in your fieldset definition:
-
-```yaml
-fields:
-  blocks:
-    label: Text
-    type: blocks
-    fieldsets:
-      heading: false
-      text: false
-```
-
 ## Block Selector Setup
 
 When you have a lot of block types you can now group them.
@@ -131,28 +117,31 @@ The ungrouped selector will automatically show up, if you just define your field
 
 ![grouped-fieldsets](https://user-images.githubusercontent.com/24532/97420757-00e14f80-190c-11eb-947e-3789a576b5b2.png)
 
-With the `fieldsetGroups` option you can take control and create such groups though: 
+You can use the group fieldset, to group multiple fieldsets
 
 ```yaml
 fields:
   blocks:
     label: Text
     type: blocks
-    fieldsetGroups:
+    fieldsets:
       text:
         label: Text
+	type: group
         fieldsets:
           - text
           - heading
           - quote
       media:
         label: Media
+	type: group
         fieldsets:
           - image
           - gallery
           - video
       code:
         label: Code
+	type: group
         fieldsets:
           - code
           - kirbytext
@@ -168,14 +157,9 @@ You can configure the default setup of your Blocks field in your `config.php`
 return [
     'blocks' => [
         'fieldsets' => [
-            'heading' => 'blocks/heading',
-            'text'    => 'blocks/text',
-            'image'   => 'blocks/image',
-	    'video'   => 'blocks/video'
-        ],
-        'fieldsetGroups' => [
             'text' => [
                 'label' => 'Text',
+		'type' => 'group',
                 'fieldsets' => [
                     'text',
                     'heading'
@@ -183,6 +167,7 @@ return [
             ],
             'media' => [
                 'label' => 'Media',
+		'type' => 'group',
                 'fieldsets' => [
                     'image',
 		    'video'
