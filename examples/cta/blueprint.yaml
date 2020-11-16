@@ -1,0 +1,7 @@
+name: Call to action
+icon: bolt
+fields:
+    text:
+        type: text
+    url:
+        type: url
