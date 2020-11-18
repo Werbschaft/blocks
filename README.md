@@ -10,13 +10,13 @@ The Kirby Builder by Tim Ötting is one of the most popular plugins out there an
 
 ## Alpha
 
-The new field is currently in alpha. 
+The new field is currently in alpha.
 
 ## Download
 
 [https://github.com/getkirby/kirby/archive/feature/blocks.zip](https://github.com/getkirby/kirby/archive/feature/blocks.zip)
 
-This is a complete kirby folder. Replace your current installation with it and **make sure to wipe your media folder**. It might also be required to flush the browser cache if the blocks field does not show up correctly. 
+This is a complete kirby folder. Replace your current installation with it and **make sure to wipe your media folder**. It might also be required to flush the browser cache if the blocks field does not show up correctly. Also, for now, you will have to remove the Editor and Builder plugins in your Kirby installation, as they are not compatible with the Blocks field.
 
 ## Issues
 
@@ -29,7 +29,7 @@ Please report issues here on Github: https://github.com/getkirby/blocks/issues
 ### Basic usage
 
 ```yaml
-fields: 
+fields:
   blocks:
     label: Text
     type: blocks
@@ -180,11 +180,11 @@ return [
 
 ## New ways to work with blocks in your block snippets
 
-Your old block snippets should work as expected, but a few things are deprecated and you should follow the new way of doing things in the snippets: 
+Your old block snippets should work as expected, but a few things are deprecated and you should follow the new way of doing things in the snippets:
 
 ### The `$block` object
 
-The new `$block` object replaces `$data` Yo can still use `$data` instead, but consider this deprecated. The `$block` object comes with the following methods: 
+The new `$block` object replaces `$data` Yo can still use `$data` instead, but consider this deprecated. The `$block` object comes with the following methods:
 
 `$block->id()` (replaces `$data->_uid()`)
 
@@ -198,7 +198,7 @@ You can still call all your fields directly. I.e.
 
 etc.
 
-You can also access fields via the content method if you want to use reserved words for fieldnames: 
+You can also access fields via the content method if you want to use reserved words for fieldnames:
 
 `$block->content()->id()`
 
@@ -212,7 +212,7 @@ You can also access fields via the content method if you want to use reserved wo
 
 `$block->content()`
 
-Returns the content object with all block fields. 
+Returns the content object with all block fields.
 
 `$block->hasNext()`
 
@@ -224,7 +224,7 @@ Returns the content object with all block fields.
 
 `$block->id()`
 
-*Returns the block id. Block IDs are now created in the universal UUID v4 format.* 
+*Returns the block id. Block IDs are now created in the universal UUID v4 format.*
 
 `$block->indexOf()`
 
@@ -314,7 +314,7 @@ All blocks are part of a blocks collection. It follows the regular stuff you can
 <?= $page->myBlocksField()->toBlocks() ?>
 ```
 
-Of course it's still possible to use a foreach loop instead: 
+Of course it's still possible to use a foreach loop instead:
 
 ```php
 <?php foreach ($page->myBlocksField()->toBlocks() as $block): ?>
@@ -330,7 +330,7 @@ or the good old version by manually loading snippets
 <?php endforeach ?>
 ```
 
-if you want to keep the `$data` variable instead of `$block` this is of course possible as well. 
+if you want to keep the `$data` variable instead of `$block` this is of course possible as well.
 
 ```php
 <?php foreach ($page->myBlocksField()->toBlocks() as $block): ?>
@@ -342,11 +342,11 @@ Rendering the block by converting it to a string will automatically pass `$block
 
 ## The Layout field
 
-In addition to the blocks field we also have a new layout field for complex block layouts in multiple columns. 
+In addition to the blocks field we also have a new layout field for complex block layouts in multiple columns.
 
 ```yaml
 fields:
-  layout: 
+  layout:
     type: layout
     layouts:
       - "1/1"
@@ -354,10 +354,10 @@ fields:
       - "1/4, 1/4, 1/4, 1/4"
       - "1/3, 2/3"
       - "2/3, 1/3"
-      - "1/3, 1/3, 1/3"    
+      - "1/3, 1/3, 1/3"
 ```
 
-The layout field also accepts the `fieldsets` option from the blocks field to control blocks in columns. 
+The layout field also accepts the `fieldsets` option from the blocks field to control blocks in columns.
 
 ### How to render layouts in your templates
 
@@ -394,3 +394,13 @@ Each column in a layout as a `$column->width()` method which will return the wid
 </section>
 <?php endforeach ?>
 ```
+
+### Troubleshooting
+
+If the Blocks field is not working, especially right after installation or updating to a new version, make sure to check the following things:
+
+- The `media` folder was wiped after the installation
+- Your browser's cache was flushed
+- Editor and Builder plugins are removed from your Kirby installation (Blocks is currently not compatible with those, in a future release they will work alongside)
+
+If none of this helps, please open an issue on the [Blocks Github Page](https://github.com/getkirby/blocks/issues) and describe the exact issue in detail.
