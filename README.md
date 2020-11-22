@@ -127,25 +127,44 @@ fields:
     fieldsets:
       text:
         label: Text
-	type: group
+        type: group
         fieldsets:
           - text
           - heading
           - quote
       media:
         label: Media
-	type: group
+        type: group
         fieldsets:
           - image
           - gallery
           - video
       code:
         label: Code
-	type: group
+        type: group
         fieldsets:
           - code
           - kirbytext
 ```
+
+By default grouped fieldsets are always open, but it is also possible to close them in the block selection modal with the new option `open: false`
+
+```yaml
+fields:
+  blocks:
+    label: Text
+    type: blocks
+    fieldsets:
+      text:
+        label: Text
+        type: group
+        open: false
+        fieldsets:
+          - text
+          - heading
+          - quote
+```
+
 
 ## Config
 
